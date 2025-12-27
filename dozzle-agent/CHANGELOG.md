@@ -1,11 +1,26 @@
 # Changelog
 
+## 0.2.1
+
+### Changed
+- Reorganized repository structure for Home Assistant compatibility
+  - Created `repository.json` at root for Home Assistant repository recognition
+  - Moved all add-on files to `dozzle-agent/` directory
+  - Repository now follows Home Assistant add-on repository structure
+- Cleaned up development documentation files
+  - Consolidated all dev documentation into DEV.md
+  - Removed redundant documentation files
+
 ## 0.2.0
 
 ### Changed
 - Updated all repository URLs to `homeassistant-dozzle-agent`
 - Updated documentation links in config.yaml
 - Updated README.md with correct repository references
+- Reorganized repository structure for Home Assistant compatibility
+  - Created `repository.json` at root
+  - Moved all add-on files to `dozzle-agent/` directory
+  - Repository now follows Home Assistant add-on repository structure
 
 ### Added
 - Comprehensive wiki documentation (WIKI.md)
@@ -13,6 +28,7 @@
 - Troubleshooting section
 - FAQ section
 - Advanced configuration documentation
+- `repository.json` for Home Assistant repository recognition
 
 ## 0.1.0
 
