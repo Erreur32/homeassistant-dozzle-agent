@@ -20,9 +20,10 @@ This repository contains the **Dozzle Agent** add-on for Home Assistant.
 
 This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is designed to be used with a main Dozzle instance that connects to this agent.
 
->⚠️ **This is not an official add-on from Dozzle!**  
->⚠️ **This add-on has NO web interface - it's a backend agent only!**  
->⚠️ **This repository is specifically for Dozzle Agent addon only**
+> [!IMPORTANT]
+>  **This is not an official add-on from Dozzle!**  
+> **This add-on has NO web interface - it's a backend agent only!**  
+> **This repository is specifically for Dozzle Agent addon only**
 
 ---
 
@@ -166,4 +167,5 @@ MIT License - see the [LICENSE.md][license] file for details
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
 [stars]: https://github.com/Erreur32/homeassistant-dozzle-agent/stargazers
+
 
