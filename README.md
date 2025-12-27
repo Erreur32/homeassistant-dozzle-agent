@@ -1,4 +1,4 @@
-# Home Assistant Add-on: Dozzle Agent
+# Home Assistant Add-on Repository: Dozzle Agent
 
 [![Release][release-shield]][release]
 ![Project Stage][project-stage-shield]
@@ -9,6 +9,8 @@
 
 ## About
 
+This repository contains the **Dozzle Agent** add-on for Home Assistant.
+
 [Dozzle Agent](https://github.com/amir20/dozzle) is a backend agent for Dozzle that allows monitoring Docker containers remotely from a main Dozzle instance.
 
 This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is designed to be used with a main Dozzle instance that connects to this agent.
@@ -16,6 +18,19 @@ This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is 
 >⚠️ **This is not an official add-on from Dozzle!**  
 >⚠️ **This add-on has NO web interface - it's a backend agent only!**  
 >⚠️ **This repository is specifically for Dozzle Agent addon only**
+
+## Repository Structure
+
+```
+homeassistant-dozzle-agent/
+├── repository.json          # Repository metadata
+└── dozzle-agent/           # Dozzle Agent add-on
+    ├── config.yaml
+    ├── Dockerfile
+    └── ...
+```
+
+For detailed information about the add-on, see the [dozzle-agent README](dozzle-agent/README.md).
 
 ---
 
