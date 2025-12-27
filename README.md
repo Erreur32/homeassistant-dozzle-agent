@@ -1,7 +1,7 @@
 # Home Assistant Add-on Repository: Dozzle Agent
 
 <div align="center">
-  <img src="dozzle.svg" alt="Dozzle Agent" width="128" height="128">
+<img src="https://raw.githubusercontent.com/Erreur32/homeassistant-dozzle-agent/refs/heads/main/dozzle-agent/dozzle.svg" alt="Dozzle Agent" width="128" height="128">
   <h2>Dozzle Agent</h2>
 </div>
 
@@ -166,3 +166,4 @@ MIT License - see the [LICENSE.md][license] file for details
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
 [stars]: https://github.com/Erreur32/homeassistant-dozzle-agent/stargazers
+
