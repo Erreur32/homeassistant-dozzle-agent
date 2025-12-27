@@ -1,7 +1,7 @@
 # Home Assistant Add-on: Dozzle Agent
 
 <div align="center">
-  <img src="dozzle.svg" alt="Dozzle Agent" width="128" height="128">
+  <img src="https://raw.githubusercontent.com/Erreur32/homeassistant-dozzle-agent/refs/heads/main/dozzle-agent/dozzle.svg" alt="Dozzle Agent" width="128" height="128">
   <h2>Dozzle Agent</h2>
 </div>
 
