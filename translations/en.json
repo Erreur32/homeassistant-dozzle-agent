@@ -1,0 +1,15 @@
+{
+    "config": {
+      "log_level": {
+        "name": "📝 Log Level",
+        "description": "Define the logging level for Dozzle Agent."
+      }
+    },
+    "ports": {
+        "7007/tcp": {
+            "name": "Dozzle Agent Port",
+            "description": "Port for Dozzle Agent backend service."
+        }
+    }
+}
+

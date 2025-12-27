@@ -1,0 +1,66 @@
+---
+name: "Dozzle Agent"
+description: "Dozzle Agent for HASSIO"
+version: "0.1.0"
+dozzle.version: "8.14.12"
+slug: "dozzle-agent"
+url: "https://github.com/Erreur32/homeassistant-dozzle-addon"
+issues: "https://github.com/Erreur32/homeassistant-dozzle-addon/issues"
+documentation: "https://github.com/Erreur32/homeassistant-dozzle-addon/wiki"
+
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+
+init: false
+startup: application
+boot: auto
+host_network: true
+docker_api: true
+
+# Configuration Options
+options:
+  log_level: "info"
+  hostname: ""
+
+schema:
+  log_level: list(debug|info|error)
+  hostname: str
+
+options_description:
+  log_level: "Log level"
+  hostname: "Agent hostname (optional)"
+
+# Port Configuration
+ports:
+  "7007/tcp": 7007
+ports_description:
+  "7007/tcp": "Dozzle Agent Port"
+
+# System Configuration
+watchdog: "http://[HOST]:[PORT:7007]/"
+udev: true
+devices:
+  - /dev/log
+  - /dev/kmsg
+
+# System Permissions
+hassio_api: true
+hassio_role: default
+auth_api: true
+
+privileged:
+  - SYS_ADMIN
+  - DAC_READ_SEARCH
+
+map:
+  - config:rw
+  - ssl:rw
+  - share:rw
+  - backup:rw
+  - media:rw
+  - docker_socket:rw
+
