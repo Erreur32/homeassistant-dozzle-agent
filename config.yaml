@@ -1,12 +1,12 @@
 ---
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
-version: "0.1.0"
+version: "0.2.0"
 dozzle.version: "8.14.12"
 slug: "dozzle-agent"
-url: "https://github.com/Erreur32/homeassistant-dozzle-addon"
-issues: "https://github.com/Erreur32/homeassistant-dozzle-addon/issues"
-documentation: "https://github.com/Erreur32/homeassistant-dozzle-addon/wiki"
+url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
+issues: "https://github.com/Erreur32/homeassistant-dozzle-agent/issues"
+documentation: "https://github.com/Erreur32/homeassistant-dozzle-agent/wiki"
 
 arch:
   - aarch64

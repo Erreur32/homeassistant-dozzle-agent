@@ -36,7 +36,7 @@ This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is 
 
 2. **Add this repository**:
    ```
-   https://github.com/Erreur32/homeassistant-dozzle-addon
+   https://github.com/Erreur32/homeassistant-dozzle-agent
    ```
 
 3. **Search for "Dozzle Agent"** in the Add-on Store  
@@ -117,15 +117,15 @@ check [the contributor's page][contributors].
 
 MIT License - see the [LICENSE.md][license] file for details
 
-[contributors]: https://github.com/Erreur32/homeassistant-dozzle-addon/graphs/contributors
+[contributors]: https://github.com/Erreur32/homeassistant-dozzle-agent/graphs/contributors
 [erreur32]: https://github.com/Erreur32
-[issue]: https://github.com/Erreur32/homeassistant-dozzle-addon/issues
-[license]: https://github.com/Erreur32/homeassistant-dozzle-addon/blob/main/LICENSE.md
+[issue]: https://github.com/Erreur32/homeassistant-dozzle-agent/issues
+[license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[release-shield]: https://img.shields.io/badge/version-v0.1.0-blue.svg
-[release]: https://github.com/Erreur32/homeassistant-dozzle-addon/releases/tag/v0.1.0
+[release-shield]: https://img.shields.io/badge/version-v0.2.0-blue.svg
+[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.2.0
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
-[issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-addon.svg
-[stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-addon.svg
-[stars]: https://github.com/Erreur32/homeassistant-dozzle-addon/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
+[stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
+[stars]: https://github.com/Erreur32/homeassistant-dozzle-agent/stargazers
