@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.5
+
+### Added
+- Fix URL img readme
+
 ## 0.2.4
 
 ### Added

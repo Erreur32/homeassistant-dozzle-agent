@@ -158,10 +158,10 @@ MIT License - see the [LICENSE.md][license] file for details
 [erreur32]: https://github.com/Erreur32
 [issue]: https://github.com/Erreur32/homeassistant-dozzle-agent/issues
 [license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[release-shield]: https://img.shields.io/badge/version-v0.2.4-blue.svg
-[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.2.4
+[release-shield]: https://img.shields.io/badge/version-v0.2.5-blue.svg
+[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.2.5
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
