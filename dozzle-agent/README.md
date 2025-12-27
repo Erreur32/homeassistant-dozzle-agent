@@ -18,9 +18,10 @@
 
 This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is designed to be used with a main Dozzle instance that connects to this agent.
 
->⚠️ **This is not an official add-on from Dozzle!**  
->⚠️ **This add-on has NO web interface - it's a backend agent only!**  
->⚠️ **This repository is specifically for Dozzle Agent addon only**
+> [!IMPORTANT]
+>  **This is not an official add-on from Dozzle!**  
+> **This add-on has NO web interface - it's a backend agent only!**  
+> **This repository is specifically for Dozzle Agent addon only**
 
 ---
 
