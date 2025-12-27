@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.2
+
+### Added
+- Added Dozzle SVG logo to README files
+- Added "Dozzle Agent" title text next to logo in READMEs
+- Added Quick Start section with Home Assistant badge in main README
+
+### Changed
+- Updated README presentation with centered logo and title
+- Improved visual branding with SVG logo instead of PNG
+
 ## 0.2.1
 
 ### Changed

@@ -1,5 +1,10 @@
 # Home Assistant Add-on Repository: Dozzle Agent
 
+<div align="center">
+  <img src="dozzle.svg" alt="Dozzle Agent" width="128" height="128">
+  <h2>Dozzle Agent</h2>
+</div>
+
 [![Release][release-shield]][release]
 ![Project Stage][project-stage-shield]
 ![Project Maintenance][maintenance-shield]
@@ -18,6 +23,23 @@ This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is 
 >⚠️ **This is not an official add-on from Dozzle!**  
 >⚠️ **This add-on has NO web interface - it's a backend agent only!**  
 >⚠️ **This repository is specifically for Dozzle Agent addon only**
+
+---
+
+## Quick Start
+
+![Dozzle Screenshot](https://github.com/user-attachments/assets/b184931c-03d4-4e8a-b716-a9b17055892d)
+
+[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FErreur32%2Fhomeassistant-dozzle-agent)
+
+1. Click on button above
+2. Click **ADD** and **RESTART** Home Assistant
+3. Go to [Add-on Store](https://my.home-assistant.io/redirect/supervisor_store/)
+4. Search for **"Dozzle Agent"**
+5. Click **Install** and wait for the process to complete
+6. Start the add-on
+
+---
 
 ## Repository Structure
 
@@ -40,7 +62,7 @@ For detailed information about the add-on, see the [dozzle-agent README](dozzle-
 ✔️ Remote Docker container monitoring  
 ✔️ Lightweight and efficient  
 ✔️ No web interface (backend only)  
-✔️ Multiple agents support
+ 
 
 ---
 
@@ -138,8 +160,8 @@ MIT License - see the [LICENSE.md][license] file for details
 [license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[release-shield]: https://img.shields.io/badge/version-v0.2.1-blue.svg
-[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.2.1
+[release-shield]: https://img.shields.io/badge/version-v0.2.2-blue.svg
+[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.2.2
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg

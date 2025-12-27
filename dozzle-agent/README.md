@@ -1,5 +1,10 @@
 # Home Assistant Add-on: Dozzle Agent
 
+<div align="center">
+  <img src="dozzle.svg" alt="Dozzle Agent" width="128" height="128">
+  <h2>Dozzle Agent</h2>
+</div>
+
 [![Release][release-shield]][release]
 ![Project Stage][project-stage-shield]
 ![Project Maintenance][maintenance-shield]
