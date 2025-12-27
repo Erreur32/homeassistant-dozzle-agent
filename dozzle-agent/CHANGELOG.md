@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.6
+
+### Added
+- Update in advance 2026 [maintenance-shield]
+
 ## 0.2.5
 
 ### Added
