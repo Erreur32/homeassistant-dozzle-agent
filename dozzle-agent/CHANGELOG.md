@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.4
+
+### Added
+- Add .gitignore files
+
 ## 0.2.3
 
 ### Added
