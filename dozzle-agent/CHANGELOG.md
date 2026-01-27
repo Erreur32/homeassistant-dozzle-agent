@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.9
+
+### Added
+- Added DNS resolution troubleshooting section in WIKI
+
+## 0.2.9
+
+### Added
+- Added troubleshooting section for DNS resolution failures during add-on build
+- Documented solutions for "auth.docker.io lookup timeout" errors in WIKI.md
+
 ## 0.2.8
 
 ### Added

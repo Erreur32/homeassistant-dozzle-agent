@@ -240,6 +240,56 @@ docker run -d \
 
 ## Troubleshooting
 
+### Build Error: DNS Resolution Failure
+
+**Problem:** Installation/build fails with DNS timeout error:
+
+```text
+ERROR: failed to build: failed to solve: failed to fetch anonymous token: 
+Get "https://auth.docker.io/token?scope=repository%3Aamir20%2Fdozzle%3Apull&service=registry.docker.io": 
+dial tcp: lookup auth.docker.io on 127.0.0.11:53: read udp 127.0.0.1:38495->127.0.0.11:53: i/o timeout
+```
+
+This error occurs when Home Assistant OS cannot resolve DNS to reach Docker Hub during the add-on build process.
+
+**Solutions:**
+
+1. **Check DNS Configuration in Home Assistant:**
+   - Go to **Settings** → **System** → **Network**
+   - Verify DNS servers are configured correctly
+   - Try adding public DNS servers like `8.8.8.8` (Google) or `1.1.1.1` (Cloudflare)
+   - Click **Save** and restart Home Assistant
+
+2. **Verify Network Connectivity:**
+   - Ensure your Home Assistant VM/host has internet connectivity
+   - Test DNS resolution from Home Assistant:
+     - Go to **Developer Tools** → **YAML**
+     - Or use SSH add-on to test: `nslookup auth.docker.io`
+   - Verify you can reach Docker Hub: `ping registry-1.docker.io`
+
+3. **Check VM Network Settings:**
+   - If running in a VM, verify the network adapter is properly configured
+   - Ensure the VM has access to the host network or internet
+   - Check if any firewall or network restrictions are blocking Docker Hub access
+
+4. **Restart Home Assistant Supervisor:**
+   - Go to **Settings** → **Add-ons** → **Dozzle Agent**
+   - Click **Stop** (if running)
+   - Go to **Supervisor** → **System** → Click **Restart** on Supervisor
+   - Wait for restart, then try installing again
+
+5. **Check Home Assistant System Logs:**
+   - Go to **Settings** → **System** → **Logs**
+   - Look for DNS or network-related errors
+   - Check Supervisor logs for build errors
+
+6. **Alternative: Pre-download Docker Image (Advanced):**
+   - If DNS issues persist, you may need to configure Docker to use a different DNS server
+   - This requires SSH access and Docker daemon configuration
+   - Contact your network administrator if you're in a restricted network environment
+
+**Note:** This is typically a network/DNS configuration issue with Home Assistant OS, not a problem with the add-on itself. The add-on needs to download the Dozzle image from Docker Hub during build, which requires proper DNS resolution.
+
 ### Agent Not Starting
 
 **Problem:** The add-on fails to start or crashes immediately.
