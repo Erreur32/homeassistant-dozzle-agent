@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.8
+
+### Added
+- Updated Dozzle to version 9.0.3
+
 ## 0.2.6
 
 ### Added

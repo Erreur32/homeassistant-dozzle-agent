@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-ARG DOZZLE_VERSION=9.0.1
+ARG DOZZLE_VERSION=9.0.3
 
 # Stage 1: Get Dozzle binary from official image
 FROM amir20/dozzle:v${DOZZLE_VERSION} AS dozzle_source
