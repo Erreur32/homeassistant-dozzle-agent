@@ -1,10 +1,13 @@
-ARG BUILD_FROM
+# Build argument for base image (defaults to Alpine Linux if not provided by Supervisor)
+# Home Assistant Supervisor will override this with the appropriate architecture-specific base image
+ARG BUILD_FROM=alpine:latest
 ARG DOZZLE_VERSION=9.0.3
 
 # Stage 1: Get Dozzle binary from official image
 FROM amir20/dozzle:v${DOZZLE_VERSION} AS dozzle_source
 
 # Stage 2: Final image
+# Use BUILD_FROM if provided, otherwise fallback to Alpine
 FROM ${BUILD_FROM}
 
 COPY config.yaml /tmp/config.yaml
