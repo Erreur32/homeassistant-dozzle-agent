@@ -1,13 +1,17 @@
 # Changelog
 
+## 0.3.0
+
+### Fixed
+- Fixed Dockerfile build failure caused by missing BUILD_FROM default value
+- Added fallback to `alpine:latest` when BUILD_FROM is not provided by Supervisor
+- Resolves "InvalidDefaultArgInFrom" warnings and DNS timeout errors during build
+- Build now works even when ghcr.io DNS resolution fails
+
 ## 0.2.9
 
 ### Added
 - Added DNS resolution troubleshooting section in WIKI
-
-## 0.2.9
-
-### Added
 - Added troubleshooting section for DNS resolution failures during add-on build
 - Documented solutions for "auth.docker.io lookup timeout" errors in WIKI.md
 
