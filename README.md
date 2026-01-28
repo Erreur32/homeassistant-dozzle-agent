@@ -16,6 +16,8 @@
 
 This repository contains the **Dozzle Agent** add-on for Home Assistant.
 
+**Current version:** `0.3.0` (Dozzle `9.0.3`)
+
 [Dozzle Agent](https://github.com/amir20/dozzle) is a backend agent for Dozzle that allows monitoring Docker containers remotely from a main Dozzle instance.
 
 This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is designed to be used with a main Dozzle instance that connects to this agent.
@@ -167,5 +169,6 @@ MIT License - see the [LICENSE.md][license] file for details
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
 [stars]: https://github.com/Erreur32/homeassistant-dozzle-agent/stargazers
+
 
 
