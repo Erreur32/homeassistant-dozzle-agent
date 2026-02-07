@@ -1,0 +1,43 @@
+# AppArmor profile for Dozzle Agent add-on (HA 2026 security best practice).
+# Restricts add-on to minimal required access; improves security score.
+# See: https://developers.home-assistant.io/docs/add-ons/security
+
+#include <tunables/global>
+
+# Profile name matches add-on slug for Supervisor
+profile dozzle-agent flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+
+  # Capabilities: minimal set (no SYS_ADMIN here; granted separately by Supervisor if needed)
+  file,
+  signal (send) set=(kill,term,int,hup,cont),
+
+  # S6-Overlay (HA add-on runtime)
+  /init ix,
+  /bin/** ix,
+  /usr/bin/** ix,
+  /run/{s6,s6-rc*,service}/** ix,
+  /package/** ix,
+  /command/** ix,
+  /etc/services.d/** rwix,
+  /etc/cont-init.d/** rwix,
+  /etc/cont-finish.d/** rwix,
+  /run/{,**} rwk,
+  /dev/tty rw,
+
+  # Bashio (config helper)
+  /usr/lib/bashio/** ix,
+  /tmp/** rwk,
+
+  # Dozzle agent binary and libs
+  /usr/local/bin/dozzle ix,
+  /lib/** rmix,
+  /usr/lib/** rmix,
+
+  # Optional: if addon uses /data for options.json (Supervisor injects)
+  /data/** rw,
+
+  # Network: listen on port 7007 and connect to Supervisor/Docker API
+  network inet stream,
+  network inet6 stream,
+}

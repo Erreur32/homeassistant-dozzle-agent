@@ -401,6 +401,17 @@ The add-on uses granular capabilities (not full `privileged: true`) for minimal 
 
 These are configured in `config.yaml` and should not be removed unless you have verified the agent works with fewer capabilities on your setup.
 
+### Security score (1–6)
+
+Home Assistant displays a **security score from 1 to 6** for each app (6 = very secure, 1 = only run if you fully trust the source). To improve the score, this add-on follows 2026 best practices:
+
+- **No host network:** `host_network: false`, port mapping only.
+- **AppArmor profile:** `apparmor.txt` restricts container access (files, network, capabilities).
+- **Read-only maps:** `config`, `ssl`, `share`, `backup`, `media` are mapped as `:ro` because the agent does not write to them.
+- **Minimal permissions:** no `privileged: true`, only `docker_api: true` and targeted capabilities (`SYS_ADMIN`, `DAC_READ_SEARCH`).
+
+The score may stay below 6 while the add-on requests elevated capabilities (Docker access / log reading). **Codenotary signing:** for a full chain of trust, you can sign images with [Codenotary CAS](https://cas.codenotary.com/) and add your email to the app config (`codenotary`). See [HA App security docs](https://developers.home-assistant.io/docs/add-ons/security).
+
 ### Watchdog
 
 The Supervisor pings the addon to check it is alive:
@@ -423,7 +434,7 @@ This can happen occasionally when the agent is busy (e.g. many containers, heavy
 
 ### Q: Is this add-on secure?
 
-**A:** The add-on requires Docker socket access and system privileges to function. Ensure your Home Assistant instance is properly secured and not exposed to the internet without proper protection.
+**A:** The add-on uses Docker API access (via Supervisor) and minimal capabilities (SYS_ADMIN, DAC_READ_SEARCH) to list containers and stream logs. It follows HA 2026 best practices: no host network, AppArmor profile, read-only maps. Home Assistant assigns a security score (1–6); see the [Security score](#security-score-1-6) section. Ensure your Home Assistant instance is properly secured and not exposed to the internet without protection.
 
 ### Q: Can I use this with Dozzle running in Docker on the same Home Assistant instance?
 

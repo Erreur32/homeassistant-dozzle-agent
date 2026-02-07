@@ -1,7 +1,7 @@
 ---
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
-version: "0.3.3"
+version: "0.3.4"
 dozzle.version: "9.0.3"
 slug: "dozzle-agent"
 url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
@@ -59,11 +59,11 @@ privileged:
   - SYS_ADMIN
   - DAC_READ_SEARCH
 
-# Only standard HA map types (config, ssl, share, backup, media). docker_socket is not valid; use docker_api: true above.
+# Map read-only when write is not needed (HA 2026 security score). Dozzle agent does not write to these.
 map:
-  - config:rw
-  - ssl:rw
-  - share:rw
-  - backup:rw
-  - media:rw
+  - config:ro
+  - ssl:ro
+  - share:ro
+  - backup:ro
+  - media:ro
 

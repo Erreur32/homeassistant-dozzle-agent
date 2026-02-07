@@ -1,122 +1,59 @@
 # Changelog
 
-## 0.3.3
+## 0.3.4
+
+### Security
+
+- **AppArmor profile** (`apparmor.txt`): Added for HA 2026 best practices; restricts add-on access and improves the security score (1–6).
+- **Map permissions:** All mapped folders (`config`, `ssl`, `share`, `backup`, `media`) set to **read-only** (`:ro`); the agent does not write to them.
 
 ### Added
-- Security update
+
+- WIKI section "Security score (1–6)" and Codenotary signing note.
+
+## 0.3.3
+
+### Changed
+
+- (Version bump / Security update)
 
 ## 0.3.2
 
 ### Added
-- **HA 2026 compliance:** Added `repository.yaml` at repository root (required by 2026 docs). Kept `repository.json` for backward compatibility.
+
+- **HA 2026 compliance:** Added `repository.yaml` at repository root. Kept `repository.json` for backward compatibility.
 - Documentation for system permissions (SYS_ADMIN, DAC_READ_SEARCH) in WIKI and add-on README.
 
 ### Changed
-- **Security:** Set `host_network: false` and use port mapping only (reduces attack surface; HA 2026 audit recommendation). Agent remains accessible on host IP:7007.
-- Updated WIKI "Network Configuration" and root README "Repository Structure" to reflect `repository.yaml` and network settings.
+
+- **Security:** Set `host_network: false` and use port mapping only. Agent remains accessible on host IP:7007.
+- Updated WIKI "Network Configuration" and root README "Repository Structure".
 
 ## 0.3.1
 
 ### Fixed
-- Removed invalid `docker_socket:rw` from `map` in config.yaml (not a valid HA addon map type; Docker access is already provided via `docker_api: true`). Fixes Supervisor warning: "Add-on config has invalid map entry: docker_socket:rw".
-- Set `udev: false` and kept only selective `devices` list to avoid "Add-on have full device access, and selective device access" Supervisor warning.
+
+- Removed invalid `docker_socket:rw` from `map`. Docker access via `docker_api: true` only.
+- Set `udev: false` and kept only selective `devices` list (avoids Supervisor warning).
 
 ### Added
-- Documentation for watchdog behavior (why "Watchdog missing application response" can occur when the agent is busy) and troubleshooting for frequent restarts (WIKI).
-- Troubleshooting section for Supervisor config warnings (invalid map, full device access) in WIKI.
+
+- Documentation for watchdog behavior and troubleshooting for Supervisor config warnings (WIKI).
 
 ## 0.3.0
 
 ### Fixed
-- Fixed Dockerfile build failure caused by missing BUILD_FROM default value
-- Added fallback to `alpine:latest` when BUILD_FROM is not provided by Supervisor
-- Resolves "InvalidDefaultArgInFrom" warnings and DNS timeout errors during build
-- Build now works even when ghcr.io DNS resolution fails
+
+- Fixed Dockerfile build failure (missing BUILD_FROM default, fallback to `alpine:latest`).
 
 ## 0.2.9
 
 ### Added
-- Added DNS resolution troubleshooting section in WIKI
-- Added troubleshooting section for DNS resolution failures during add-on build
-- Documented solutions for "auth.docker.io lookup timeout" errors in WIKI.md
+
+- DNS resolution troubleshooting in WIKI.
 
 ## 0.2.8
 
 ### Added
-- Updated Dozzle to version 9.0.3
 
-## 0.2.6
-
-### Added
-- Update in advance 2026 [maintenance-shield]
-
-## 0.2.5
-
-### Added
-- Fix URL img readme
-
-## 0.2.4
-
-### Added
-- Add .gitignore files
-
-## 0.2.3
-
-### Added
-- Clean Readme.md
-
-## 0.2.2
-
-### Added
-- Added Dozzle SVG logo to README files
-- Added "Dozzle Agent" title text next to logo in READMEs
-- Added Quick Start section with Home Assistant badge in main README
-
-### Changed
-- Updated README presentation with centered logo and title
-- Improved visual branding with SVG logo instead of PNG
-
-## 0.2.1
-
-### Changed
-- Reorganized repository structure for Home Assistant compatibility
-  - Created `repository.json` at root for Home Assistant repository recognition
-  - Moved all add-on files to `dozzle-agent/` directory
-  - Repository now follows Home Assistant add-on repository structure
-- Cleaned up development documentation files
-  - Consolidated all dev documentation into DEV.md
-  - Removed redundant documentation files
-
-## 0.2.0
-
-### Changed
-- Updated all repository URLs to `homeassistant-dozzle-agent`
-- Updated documentation links in config.yaml
-- Updated README.md with correct repository references
-- Reorganized repository structure for Home Assistant compatibility
-  - Created `repository.json` at root
-  - Moved all add-on files to `dozzle-agent/` directory
-  - Repository now follows Home Assistant add-on repository structure
-
-### Added
-- Comprehensive wiki documentation (WIKI.md)
-- Complete installation and usage guide
-- Troubleshooting section
-- FAQ section
-- Advanced configuration documentation
-- `repository.json` for Home Assistant repository recognition
-
-## 0.1.0
-
-### Added
-- Initial release of Dozzle Agent add-on
-- Backend-only agent mode (no UI)
-- Port 7007 for agent connections
-- Simple configuration (log_level only)
-- Host network mode for direct access
-
-### Features
-- Dozzle Agent backend service
-- Docker socket access via docker_socket:rw
-- Lightweight and efficient
-
+- Updated Dozzle to version 9.0.3.

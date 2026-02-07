@@ -16,7 +16,7 @@
 
 [Dozzle Agent](https://github.com/amir20/dozzle) is a backend agent for Dozzle that allows monitoring Docker containers remotely from a main Dozzle instance.
 
-**Current version:** `0.3.3` (Dozzle `9.0.3`)
+**Current version:** `0.3.4` (Dozzle `9.0.3`)
 
 This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is designed to be used with a main Dozzle instance that connects to this agent.
 
@@ -116,9 +116,9 @@ environment:
 
 **Note**: The agent does NOT have a web interface. It's a backend service that responds to connections from Dozzle instances.
 
-### Permissions
+### Permissions and security score
 
-The add-on uses minimal capabilities: `SYS_ADMIN` and `DAC_READ_SEARCH` (no full `privileged`). These are required for Docker API access and reading container logs. See the [Wiki - System Permissions](https://github.com/Erreur32/homeassistant-dozzle-agent/wiki) for details.
+The add-on uses minimal capabilities: `SYS_ADMIN` and `DAC_READ_SEARCH` (no full `privileged`). It includes an **AppArmor profile** and **read-only maps** to improve the Home Assistant security score (1–6). See the [Wiki - Security score and System Permissions](https://github.com/Erreur32/homeassistant-dozzle-agent/wiki) for details.
 
 ---
 
@@ -150,8 +150,8 @@ MIT License - see the [LICENSE.md][license] file for details
 [license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[release-shield]: https://img.shields.io/badge/version-v0.3.3-blue.svg
-[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.3
+[release-shield]: https://img.shields.io/badge/version-v0.3.4-blue.svg
+[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.4
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
