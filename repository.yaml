@@ -1,0 +1,5 @@
+# Home Assistant 2026 app repository configuration
+# https://developers.home-assistant.io/docs/add-ons/repository
+name: "Dozzle Agent (Erreur32)"
+url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
+maintainer: "Erreur32"

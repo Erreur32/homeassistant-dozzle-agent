@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.3
+
+### Added
+- Security update
+
+## 0.3.2
+
+### Added
+- **HA 2026 compliance:** Added `repository.yaml` at repository root (required by 2026 docs). Kept `repository.json` for backward compatibility.
+- Documentation for system permissions (SYS_ADMIN, DAC_READ_SEARCH) in WIKI and add-on README.
+
+### Changed
+- **Security:** Set `host_network: false` and use port mapping only (reduces attack surface; HA 2026 audit recommendation). Agent remains accessible on host IP:7007.
+- Updated WIKI "Network Configuration" and root README "Repository Structure" to reflect `repository.yaml` and network settings.
+
+## 0.3.1
+
+### Fixed
+- Removed invalid `docker_socket:rw` from `map` in config.yaml (not a valid HA addon map type; Docker access is already provided via `docker_api: true`). Fixes Supervisor warning: "Add-on config has invalid map entry: docker_socket:rw".
+- Set `udev: false` and kept only selective `devices` list to avoid "Add-on have full device access, and selective device access" Supervisor warning.
+
+### Added
+- Documentation for watchdog behavior (why "Watchdog missing application response" can occur when the agent is busy) and troubleshooting for frequent restarts (WIKI).
+- Troubleshooting section for Supervisor config warnings (invalid map, full device access) in WIKI.
+
 ## 0.3.0
 
 ### Fixed

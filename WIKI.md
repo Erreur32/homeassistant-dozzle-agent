@@ -355,37 +355,59 @@ This error occurs when Home Assistant OS cannot resolve DNS to reach Docker Hub 
 2. Check if there are too many containers being monitored
 3. Review Home Assistant system resources
 
+### Watchdog Restarting the Add-on
+
+**Problem:** Supervisor logs show "Watchdog missing application response" or "Watchdog found a problem with ... dozzle-agent" and the addon restarts from time to time.
+
+**Explanation:** The Supervisor periodically requests `http://[HOST]:7007/`. If the Dozzle agent is busy (handling many requests or streaming logs), it may not answer in time and the Supervisor restarts the addon. This is expected behavior when the agent is under load.
+
+**Solutions:**
+1. If it happens rarely, no action needed; the addon will start again.
+2. If it happens often: reduce the number of containers or log streams from the main Dozzle instance, or check CPU/memory on the Home Assistant host.
+3. Ensure no other service is overloading the agent (e.g. too many simultaneous connections).
+
+### Supervisor Warnings About Config (Invalid map / Full device access)
+
+**Problem:** Logs show "Add-on config has invalid map entry: docker_socket:rw" or "Add-on have full device access, and selective device access in the configuration".
+
+**Explanation:** Older addon versions used `docker_socket:rw` in `map` (not a valid Home Assistant map type) and both `udev: true` and a `devices` list, which triggers a warning.
+
+**Solution:** Update to the latest addon version. The config has been corrected: Docker access uses `docker_api: true` only, and device access uses only the selective `devices` list (no `udev: true`).
+
 ---
 
 ## Advanced Configuration
 
 ### Network Configuration
 
-The add-on uses `host_network: true`, which means:
-- The agent uses the host's network directly
-- No port mapping is needed
-- The agent is accessible via the Home Assistant IP on port 7007
+The add-on uses `host_network: false` with port mapping for better security (HA 2026 audit):
+- Port `7007/tcp` is mapped from the container to the host
+- The agent is accessible via the Home Assistant IP on port 7007 (same as before)
+- The watchdog and main Dozzle instance connect to the host IP on port 7007
 
-### Docker Socket Access
+### Docker API Access
 
-The add-on automatically maps the Docker socket (`docker_socket:rw`), allowing it to:
-- Access Docker API
+The add-on uses `docker_api: true` (Supervisor-provided Docker API), allowing it to:
+- Access Docker API without mapping the socket
 - Monitor all containers
 - Read container logs
 
 ### System Permissions
 
-The add-on requires the following privileges:
-- `SYS_ADMIN`: Required for Docker operations
-- `DAC_READ_SEARCH`: Required for reading Docker socket
+The add-on uses granular capabilities (not full `privileged: true`) for minimal privilege:
 
-These are configured automatically and should not be modified unless you understand the implications.
+- **SYS_ADMIN**: Required for Docker API operations (container listing, log access) when the Supervisor exposes the Docker API to the add-on. See [Home Assistant add-on configuration](https://developers.home-assistant.io/docs/add-ons/configuration) and [Dozzle agent mode](https://github.com/amir20/dozzle).
+- **DAC_READ_SEARCH**: Allows the process to bypass file read and search permission checks, which is needed to read container filesystem metadata and logs via the Docker API in this environment.
+
+These are configured in `config.yaml` and should not be removed unless you have verified the agent works with fewer capabilities on your setup.
 
 ### Watchdog
 
-The add-on includes a watchdog that monitors the service health:
+The Supervisor pings the addon to check it is alive:
 - URL: `http://[HOST]:[PORT:7007]/`
-- Automatically restarts the service if it becomes unresponsive
+- If the agent does not respond in time, the Supervisor restarts the addon ("Watchdog missing application response" / "Watchdog found a problem with ... application")
+
+This can happen occasionally when the agent is busy (e.g. many containers, heavy log streaming). If restarts are frequent, reduce the number of containers monitored from the main Dozzle instance or check system load. The addon does not expose a configurable watchdog timeout; that is controlled by the Supervisor.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
-version: "0.3.0"
+version: "0.3.3"
 dozzle.version: "9.0.3"
 slug: "dozzle-agent"
 url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
@@ -18,7 +18,8 @@ arch:
 init: false
 startup: application
 boot: auto
-host_network: true
+# Port mapping is used instead of host_network for better security (HA 2026 audit).
+host_network: false
 docker_api: true
 
 # Configuration Options
@@ -41,8 +42,10 @@ ports_description:
   "7007/tcp": "Dozzle Agent Port"
 
 # System Configuration
+# Supervisor pings this URL to check addon liveness; agent must respond within timeout.
 watchdog: "http://[HOST]:[PORT:7007]/"
-udev: true
+# Selective device access only (avoid udev: true when using devices list to prevent HA warning).
+udev: false
 devices:
   - /dev/log
   - /dev/kmsg
@@ -56,11 +59,11 @@ privileged:
   - SYS_ADMIN
   - DAC_READ_SEARCH
 
+# Only standard HA map types (config, ssl, share, backup, media). docker_socket is not valid; use docker_api: true above.
 map:
   - config:rw
   - ssl:rw
   - share:rw
   - backup:rw
   - media:rw
-  - docker_socket:rw
 
