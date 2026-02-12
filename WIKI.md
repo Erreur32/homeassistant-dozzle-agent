@@ -394,12 +394,7 @@ The add-on uses `docker_api: true` (Supervisor-provided Docker API), allowing it
 
 ### System Permissions
 
-The add-on uses granular capabilities (not full `privileged: true`) for minimal privilege:
-
-- **SYS_ADMIN**: Required for Docker API operations (container listing, log access) when the Supervisor exposes the Docker API to the add-on. See [Home Assistant add-on configuration](https://developers.home-assistant.io/docs/add-ons/configuration) and [Dozzle agent mode](https://github.com/amir20/dozzle).
-- **DAC_READ_SEARCH**: Allows the process to bypass file read and search permission checks, which is needed to read container filesystem metadata and logs via the Docker API in this environment.
-
-These are configured in `config.yaml` and should not be removed unless you have verified the agent works with fewer capabilities on your setup.
+The add-on requires **privileged capabilities** `SYS_ADMIN` and `DAC_READ_SEARCH` to work with the Supervisor Docker API (list containers, stream logs). Without them the agent does not function. These are configured in `config.yaml` and cause the HA security score to stay at 1; this is a known limitation for add-ons that need Docker API access.
 
 ### Security score (1–6)
 
@@ -408,9 +403,9 @@ Home Assistant displays a **security score from 1 to 6** for each app (6 = very 
 - **No host network:** `host_network: false`, port mapping only.
 - **AppArmor profile:** `apparmor.txt` restricts container access (files, network, capabilities).
 - **Read-only maps:** `config`, `ssl`, `share`, `backup`, `media` are mapped as `:ro` because the agent does not write to them.
-- **Minimal permissions:** no `privileged: true`, only `docker_api: true` and targeted capabilities (`SYS_ADMIN`, `DAC_READ_SEARCH`).
+- **Minimal permissions:** no `privileged: true`, only the strict list `[SYS_ADMIN, DAC_READ_SEARCH]` required for the Dozzle agent to list containers and stream logs via the Supervisor Docker API. Removing these breaks the add-on, so the security score remains 1.
 
-The score may stay below 6 while the add-on requests elevated capabilities (Docker access / log reading). **Codenotary signing:** for a full chain of trust, you can sign images with [Codenotary CAS](https://cas.codenotary.com/) and add your email to the app config (`codenotary`). See [HA App security docs](https://developers.home-assistant.io/docs/add-ons/security).
+**Codenotary signing:** for a full chain of trust, maintainers can sign images with [Codenotary CAS](https://cas.codenotary.com/) and set the `codenotary` key in `config.yaml` to the signer email. See [HA App security docs](https://developers.home-assistant.io/docs/add-ons/security) and the optional `codenotary` entry in the add-on `config.yaml`.
 
 ### Watchdog
 

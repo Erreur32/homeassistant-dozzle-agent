@@ -2,11 +2,13 @@
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
 version: "0.3.4"
-dozzle.version: "9.0.3"
+dozzle.version: "10.0.0"
 slug: "dozzle-agent"
 url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
 issues: "https://github.com/Erreur32/homeassistant-dozzle-agent/issues"
 documentation: "https://github.com/Erreur32/homeassistant-dozzle-agent/wiki"
+# Optional: sign images with Codenotary CAS for chain of trust (set to maintainer email used for signing)
+# codenotary: "maintainer@example.com"
 
 arch:
   - aarch64
@@ -55,6 +57,7 @@ hassio_api: true
 hassio_role: default
 auth_api: true
 
+# Required for Docker API (list containers, stream logs). Without these the add-on does not work; score stays 1.
 privileged:
   - SYS_ADMIN
   - DAC_READ_SEARCH

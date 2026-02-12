@@ -2,6 +2,11 @@
 
 ## 0.3.4
 
+### Changed
+
+- **Dozzle updated to 10.0.0** — Docker image now pulls `amir20/dozzle:v10.0.0`.
+- Updated `update_version.sh` script: new `--dozzle` option to update Dozzle Docker version across all files.
+
 ### Security
 
 - **AppArmor profile** (`apparmor.txt`): Added for HA 2026 best practices; restricts add-on access and improves the security score (1–6).

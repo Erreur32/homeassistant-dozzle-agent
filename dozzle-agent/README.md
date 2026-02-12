@@ -118,7 +118,7 @@ environment:
 
 ### Permissions and security score
 
-The add-on uses minimal capabilities: `SYS_ADMIN` and `DAC_READ_SEARCH` (no full `privileged`). It includes an **AppArmor profile** and **read-only maps** to improve the Home Assistant security score (1–6). See the [Wiki - Security score and System Permissions](https://github.com/Erreur32/homeassistant-dozzle-agent/wiki) for details.
+The add-on needs **privileged** capabilities `SYS_ADMIN` and `DAC_READ_SEARCH` to list containers and stream logs (they cannot be removed or the add-on stops working). It also includes an **AppArmor profile** and **read-only maps**. The HA security score stays at 1 because of these capabilities; see the [Wiki - Security score and System Permissions](https://github.com/Erreur32/homeassistant-dozzle-agent/wiki) for details.
 
 ---
 
