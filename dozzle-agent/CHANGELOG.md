@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.7
+
+### Added
+- Bump version dozzle 10.0.2
+
 ## 0.3.6
 
 ### Added
