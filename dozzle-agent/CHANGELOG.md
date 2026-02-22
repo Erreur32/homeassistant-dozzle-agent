@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.9
+
+### Added
+- Bump Dozzle to 10.0.4
+
 ## 0.3.8
 
 ### Added
