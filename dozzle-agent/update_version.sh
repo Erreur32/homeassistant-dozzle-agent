@@ -23,6 +23,7 @@ DOCKERFILE="$ADDON_DIR/Dockerfile"
 CHANGELOG="$ADDON_DIR/CHANGELOG.md"
 README_ADDON="$ADDON_DIR/README.md"
 README_ROOT="$REPO_ROOT/README.md"
+WIKI="$REPO_ROOT/WIKI.md"
 
 ADDON_VER=""
 DOZZLE_VER=""
@@ -117,9 +118,15 @@ done
 # No version args: show current versions and exit
 [ -n "$ADDON_VER" ] || [ -n "$DOZZLE_VER" ] || show_versions
 
+# Read current versions from config (before we modify it) for README line
+[ -f "$CONFIG" ] || { printf "${C_RED}Missing: %s${C_RESET}\n" "$CONFIG"; exit 1; }
+CURRENT_ADDON="$(awk -F': ' '/^version:/ {gsub(/"/,""); print $2; exit}' "$CONFIG")"
+CURRENT_DOZZLE="$(awk -F': ' '/^dozzle.version:/ {gsub(/"/,""); print $2; exit}' "$CONFIG")"
+NEW_ADDON="${ADDON_VER:-$CURRENT_ADDON}"
+NEW_DOZZLE="${DOZZLE_VER:-$CURRENT_DOZZLE}"
+
 # --- Update config.yaml ---
 if [ -n "$ADDON_VER" ] || [ -n "$DOZZLE_VER" ]; then
-  [ -f "$CONFIG" ] || { printf "${C_RED}Missing: %s${C_RESET}\n" "$CONFIG"; exit 1; }
   if [ -n "$ADDON_VER" ]; then
     sed -i.bak "s/^version: .*/version: \"$ADDON_VER\"/" "$CONFIG" 2>/dev/null || \
       sed -i '' "s/^version: .*/version: \"$ADDON_VER\"/" "$CONFIG"
@@ -144,18 +151,16 @@ if [ -n "$DOZZLE_VER" ]; then
   printf "${C_GREEN}  ✓${C_RESET} Dockerfile DOZZLE_VERSION → ${C_GREEN}%s${C_RESET}\n" "$DOZZLE_VER"
 fi
 
-# --- Current version line in READMEs ---
-for README in "$README_ADDON" "$README_ROOT"; do
+# --- "Current version" line in READMEs and WIKI (single replacement: addon + dozzle) ---
+LINE="**Current version:** \`${NEW_ADDON}\` (Dozzle \`${NEW_DOZZLE}\`)"
+for README in "$README_ADDON" "$README_ROOT" "$WIKI"; do
   [ -f "$README" ] || continue
-  if [ -n "$ADDON_VER" ]; then
-    sed -i.bak "s/\`[0-9.]*\` (Dozzle/\`$ADDON_VER\` (Dozzle/" "$README" 2>/dev/null || sed -i '' "s/\`[0-9.]*\` (Dozzle/\`$ADDON_VER\` (Dozzle/" "$README"
-  fi
-  if [ -n "$DOZZLE_VER" ]; then
-    sed -i.bak "s/(Dozzle \`)[0-9.]*(\`)/(Dozzle \`$DOZZLE_VER\`)/" "$README" 2>/dev/null || sed -i '' "s/(Dozzle \`)[0-9.]*(\`)/(Dozzle \`$DOZZLE_VER\`)/" "$README"
-  fi
+  grep -q "^\*\*Current version:\*\* " "$README" 2>/dev/null || continue
+  sed -i.bak "s|^\\*\\*Current version:\\*\\* .*|$LINE|" "$README" 2>/dev/null || \
+    sed -i '' "s|^\\*\\*Current version:\\*\\* .*|$LINE|" "$README"
   rm -f "$README.bak"
 done
-printf "${C_GREEN}  ✓${C_RESET} READMEs (Current version)\n"
+printf "${C_GREEN}  ✓${C_RESET} READMEs + WIKI (Current version: %s, Dozzle %s)\n" "$NEW_ADDON" "$NEW_DOZZLE"
 
 # --- Badges version and release link (addon version only) ---
 if [ -n "$ADDON_VER" ]; then

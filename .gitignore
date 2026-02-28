@@ -1,9 +1,5 @@
 README-dev.md
 DEV.md
 UPDATE_VERSION_README.md
-update_version.sh
 
-# Fichiers non essentiels dans dozzle-agent/
- 
-dozzle-agent/update_dozzle_version.sh
- 
+# Un seul script de mise à jour versionné : dozzle-agent/update_version.sh

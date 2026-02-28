@@ -16,7 +16,7 @@
 
 This repository contains the **Dozzle Agent** add-on for Home Assistant.
 
-**Current version:** `0.3.11` (Dozzle `10.0.4`)
+**Current version:** `0.3.11` (Dozzle `10.0.6`)
 
 [Dozzle Agent](https://github.com/amir20/dozzle) is a backend agent for Dozzle that allows monitoring Docker containers remotely from a main Dozzle instance.
 
