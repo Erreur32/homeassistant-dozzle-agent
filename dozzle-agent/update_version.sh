@@ -47,7 +47,7 @@ usage() {
   echo "  --addon   Update add-on version (config.yaml, READMEs, CHANGELOG)"
   echo "  --dozzle  Update Dozzle Docker version (config.yaml, Dockerfile, READMEs, CHANGELOG)"
   echo "  --git     After update: git add + commit (message auto)"
-  echo "  --push    After update: git add + commit + push"
+  echo "  --push    After update: git add + commit + push (+ tag vX.Y.Z and push if --addon used)"
   printf "\n${C_YELLOW}Examples (run from repo root, copy-paste):${C_RESET}\n"
   echo "  # Bump Dozzle only (no git)"
   echo "  ./dozzle-agent/update_version.sh --dozzle 10.0.6"
@@ -208,6 +208,12 @@ if [ -n "$DO_GIT" ]; then
       BRANCH="$(git rev-parse --abbrev-ref HEAD)"
       git push origin "$BRANCH"
       printf "${C_GREEN}  ✓${C_RESET} Pushed to ${C_CYAN}origin %s${C_RESET}\n" "$BRANCH"
+      if [ -n "$ADDON_VER" ]; then
+        TAG="v$ADDON_VER"
+        git tag "$TAG"
+        git push origin "$TAG"
+        printf "${C_GREEN}  ✓${C_RESET} Tag ${C_CYAN}%s${C_RESET} created and pushed\n" "$TAG"
+      fi
     fi
   fi
 fi
