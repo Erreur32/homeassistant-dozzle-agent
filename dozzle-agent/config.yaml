@@ -1,7 +1,7 @@
 ---
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
-version: "0.3.14"
+version: "0.3.15"
 dozzle.version: "10.1.2"
 slug: "dozzle-agent"
 url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
@@ -44,8 +44,9 @@ ports_description:
   "7007/tcp": "Dozzle Agent Port"
 
 # System Configuration
-# Supervisor pings this URL to check addon liveness; agent must respond within timeout.
-watchdog: "http://[HOST]:[PORT:7007]/"
+# NOTE: watchdog removed - dozzle agent only serves gRPC over TLS on port 7007,
+# plain HTTP pings always fail causing restarts every ~4 minutes.
+# s6 supervisor handles process restarts natively.
 # Selective device access only (avoid udev: true when using devices list to prevent HA warning).
 udev: false
 devices:

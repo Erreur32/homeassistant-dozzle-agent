@@ -23,4 +23,8 @@ COPY --from=dozzle_source /dozzle /usr/local/bin/dozzle
 RUN chmod +x /usr/local/bin/dozzle && \
     chmod a+x /run.sh
 
+# Use dozzle's native healthcheck which verifies the gRPC/TLS connection properly
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+    CMD ["/usr/local/bin/dozzle", "healthcheck"]
+
 CMD ["/run.sh"]

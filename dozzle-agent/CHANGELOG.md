@@ -1,4 +1,10 @@
 
+## 0.3.15
+
+### Fixed
+- Remove invalid HTTP watchdog - dozzle agent serves gRPC over TLS only, plain HTTP pings always failed causing restarts every ~4 minutes (fixes #4)
+- Add proper Docker HEALTHCHECK using `dozzle healthcheck` command which correctly verifies the gRPC/TLS connection
+
 ## 0.3.14
 
 ### Added
