@@ -1,4 +1,9 @@
 
+## 0.3.16
+
+### Added
+- Bump Dozzle to 10.2.0
+
 ## 0.3.15
 
 ### Fixed
