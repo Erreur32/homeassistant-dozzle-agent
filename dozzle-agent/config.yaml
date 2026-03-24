@@ -1,7 +1,7 @@
 ---
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
-version: "0.3.18"
+version: "0.3.19"
 dozzle.version: "10.2.0"
 slug: "dozzle-agent"
 url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
