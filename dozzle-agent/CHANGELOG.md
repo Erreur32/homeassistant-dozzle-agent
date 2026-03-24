@@ -1,4 +1,14 @@
 
+## 0.3.18
+
+### Added
+- Version bump
+
+## 0.3.17
+
+### Improved
+- Add colored startup banner in logs (date, version, log level, hostname) for easier session identification
+
 ## 0.3.16
 
 ### Added
