@@ -30,6 +30,17 @@ This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is 
 
 ---
 
+> [!TIP]
+> ## Looking for the FULL Dozzle experience on Home Assistant?
+>
+> **A complete Home Assistant add-on including Dozzle (with full Web UI) AND agent support is available here:**
+>
+> ### [homeassistant-dozzle](https://github.com/Erreur32/homeassistant-dozzle)
+>
+> Use it if you want to run **Dozzle with its web interface directly on Home Assistant**, with built-in agent connectivity.
+
+---
+
 ## Quick Start
 
 ![Dozzle Screenshot](https://github.com/user-attachments/assets/b184931c-03d4-4e8a-b716-a9b17055892d)
