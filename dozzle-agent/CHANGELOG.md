@@ -3,7 +3,7 @@
 
 ### Info
 
-- **New addon available:** A full version of Dozzle (master + agent with web UI) is now available at [homeassistant-dozzle](https://github.com/Erreur32/homeassistant-dozzle) — if you want the complete Dozzle experience directly in Home Assistant, check it out!
+- **No changes in this release.** This update only serves as a notice: a full version of Dozzle (master + agent with web UI) is available and working at [homeassistant-dozzle](https://github.com/Erreur32/homeassistant-dozzle) — if you want the complete Dozzle experience directly in Home Assistant, check it out!
 
 ## 0.3.20
 
