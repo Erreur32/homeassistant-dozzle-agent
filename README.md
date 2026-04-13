@@ -17,7 +17,7 @@
 
 This repository contains the **Dozzle Agent** add-on for Home Assistant.
 
-**Current version:** `0.3.21` (Dozzle `10.2.1`)
+**Current version:** `0.3.22` (Dozzle `10.2.1`)
 
 [Dozzle Agent](https://github.com/amir20/dozzle) is a backend agent for Dozzle that allows monitoring Docker containers remotely from a main Dozzle instance.
 
@@ -109,7 +109,40 @@ log_level: info
 
 # Agent hostname (optional, appears in Dozzle UI)
 hostname: ""
+
+# Custom TLS certificates (optional, restrict who can connect)
+agent_cert: ""
+agent_key: ""
 ```
+
+---
+
+## TLS / Security
+
+The agent communicates via **gRPC over TLS** - traffic is always encrypted. By default, the certificates are **shared across all Dozzle installations** (embedded in the binary), meaning any Dozzle instance that knows your IP:port can connect.
+
+### Custom certificates (recommended)
+
+To restrict connections to only **your** Dozzle instances:
+
+1. **Generate a certificate pair:**
+   ```bash
+   openssl genpkey -algorithm RSA -out dozzle_key.pem -pkeyopt rsa_keygen_bits:2048
+   openssl req -new -x509 -key dozzle_key.pem -out dozzle_cert.pem -days 3650 \
+       -subj "/CN=dozzle"
+   ```
+
+2. **Copy both files** to your Home Assistant `/ssl/` directory.
+
+3. **Configure the add-on:**
+   ```yaml
+   agent_cert: "dozzle_cert.pem"
+   agent_key: "dozzle_key.pem"
+   ```
+
+4. **Use the same cert/key pair** on your main Dozzle instance. Only instances sharing the same certificate can communicate.
+
+> **Note:** The `/ssl/` directory is already mapped read-only in this add-on.
 
 ---
 
@@ -175,8 +208,8 @@ MIT License - see the [LICENSE.md][license] file for details
 [license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[release-shield]: https://img.shields.io/badge/version-v0.3.21-blue.svg
-[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.21
+[release-shield]: https://img.shields.io/badge/version-v0.3.22-blue.svg
+[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.22
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg

@@ -1,7 +1,7 @@
 ---
 name: "Dozzle Agent"
 description: "Dozzle Agent for HASSIO"
-version: "0.3.21"
+version: "0.3.22"
 dozzle.version: "10.2.1"
 slug: "dozzle-agent"
 url: "https://github.com/Erreur32/homeassistant-dozzle-agent"
@@ -28,14 +28,20 @@ docker_api: true
 options:
   log_level: "info"
   hostname: ""
+  agent_cert: ""
+  agent_key: ""
 
 schema:
   log_level: list(debug|info|error)
   hostname: str
+  agent_cert: str?
+  agent_key: str?
 
 options_description:
   log_level: "Log level"
   hostname: "Agent hostname (optional)"
+  agent_cert: "Custom TLS cert filename in /ssl/ (e.g. dozzle_cert.pem)"
+  agent_key: "Custom TLS key filename in /ssl/ (e.g. dozzle_key.pem)"
 
 # Port Configuration
 ports:

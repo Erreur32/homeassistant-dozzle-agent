@@ -1,4 +1,10 @@
 
+## 0.3.22
+
+### Added
+- **Custom TLS certificates:** new `agent_cert` / `agent_key` options. Place your cert/key files in `/ssl/` to restrict agent connections to instances sharing the same key pair. By default, Dozzle uses shared certs embedded in the binary (encrypted transport but no authentication). (#5)
+- **Note:** This standalone agent add-on is superseded by [homeassistant-dozzle](https://github.com/Erreur32/homeassistant-dozzle) which includes full UI + agent in one add-on (with agent-only mode via `enable_master: false`).
+
 ## 0.3.21
 
 ### Info
