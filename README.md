@@ -17,7 +17,7 @@
 
 This repository contains the **Dozzle Agent** add-on for Home Assistant.
 
-**Current version:** `0.3.22` (Dozzle `10.3.1`)
+**Current version:** `0.3.23` (Dozzle `10.6.1`)
 
 [Dozzle Agent](https://github.com/amir20/dozzle) is a backend agent for Dozzle that allows monitoring Docker containers remotely from a main Dozzle instance.
 
@@ -208,8 +208,8 @@ MIT License - see the [LICENSE.md][license] file for details
 [license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[release-shield]: https://img.shields.io/badge/version-v0.3.22-blue.svg
-[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.22
+[release-shield]: https://img.shields.io/badge/version-v0.3.23-blue.svg
+[release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.23
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [issues-shield]: https://img.shields.io/github/issues/Erreur32/homeassistant-dozzle-agent.svg
 [stars-shield]: https://img.shields.io/github/stars/Erreur32/homeassistant-dozzle-agent.svg
