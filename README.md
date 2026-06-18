@@ -223,7 +223,7 @@ MIT License - see the [LICENSE.md][license] file for details
 [erreur32]: https://github.com/Erreur32
 [issue]: https://github.com/Erreur32/homeassistant-dozzle-agent/issues
 [license]: https://github.com/Erreur32/homeassistant-dozzle-agent/blob/main/LICENSE.md
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
+[maintenance-shield]: https://img.shields.io/maintenance/no/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
 [release-shield]: https://img.shields.io/badge/version-v0.3.23-blue.svg
 [release]: https://github.com/Erreur32/homeassistant-dozzle-agent/releases/tag/v0.3.23
