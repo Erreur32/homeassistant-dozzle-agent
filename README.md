@@ -1,3 +1,32 @@
+
+> ⚠️ **DEPRECATED — this repository is no longer maintained.**
+>
+> The agent has been merged into a single repository that ships **both the
+> master (Dozzle web UI) and the agent**:
+> 👉 **https://github.com/Erreur32/homeassistant-dozzle**
+>
+> The standalone agent image here is no longer built (you may get
+> `exec /run.sh: no such file or directory` on start). Please migrate.
+>
+> **Agent-only mode is still available** in the new repo — set in the
+> add-on options:
+> ```yaml
+> enable_master: false
+> enable_agent: true
+> ```
+> then map port `7007/tcp`. This reproduces exactly what this old add-on did.
+
+> [!TIP]
+> ## Looking for the FULL Dozzle experience on Home Assistant?
+>
+> **A complete Home Assistant add-on including Dozzle (with full Web UI) AND agent support is available here:**
+>
+> ### [homeassistant-dozzle](https://github.com/Erreur32/homeassistant-dozzle)
+>
+> Use it if you want to run **Dozzle with its web interface directly on Home Assistant**, with built-in agent connectivity.
+
+---
+
 # Home Assistant Add-on Repository: Dozzle Agent
 
 <div align="center">
@@ -30,33 +59,6 @@ This add-on runs **only** the Dozzle agent (backend, no UI) on port 7007. It is 
 
 ---
 
-> ⚠️ **DEPRECATED — this repository is no longer maintained.**
->
-> The agent has been merged into a single repository that ships **both the
-> master (Dozzle web UI) and the agent**:
-> 👉 **https://github.com/Erreur32/homeassistant-dozzle**
->
-> The standalone agent image here is no longer built (you may get
-> `exec /run.sh: no such file or directory` on start). Please migrate.
->
-> **Agent-only mode is still available** in the new repo — set in the
-> add-on options:
-> ```yaml
-> enable_master: false
-> enable_agent: true
-> ```
-> then map port `7007/tcp`. This reproduces exactly what this old add-on did.
-
-> [!TIP]
-> ## Looking for the FULL Dozzle experience on Home Assistant?
->
-> **A complete Home Assistant add-on including Dozzle (with full Web UI) AND agent support is available here:**
->
-> ### [homeassistant-dozzle](https://github.com/Erreur32/homeassistant-dozzle)
->
-> Use it if you want to run **Dozzle with its web interface directly on Home Assistant**, with built-in agent connectivity.
-
----
 
 ## Quick Start
 
